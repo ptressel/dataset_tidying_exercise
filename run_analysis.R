@@ -306,9 +306,12 @@ setcolorder(subject.activity.feature.stats,
 # We no longer need the feature name.
 subject.activity.feature.stats <- subject.activity.feature.stats[, !"feature", with = FALSE]
 
-# Write out the tidied dataset.
+# Write out the tidied dataset.  Tell the user where we're putting it.
+file.name <- "subject_activity_mean_std.csv"
+current.wd <- getwd()
+cat("Writing tidied dataset \"", file.name, "\" into directory \"", current.wd, "\"\n", sep="")
 write.table(
     subject.activity.feature.stats,
-    file = "subject_activity_mean_std.csv",
+    file = file.name,
     sep = ",",
     row.names = FALSE)
